@@ -5,7 +5,7 @@ import { business, fullAddress } from '@/lib/site';
 import BookingLink from '@/components/BookingLink';
 
 /** Red "next step" band used at the foot of pages. */
-export default function CtaBand({ title, children }: { title: string; children: React.ReactNode }) {
+export default function CtaBand({ title, long, children }: { title: string; /** smaller title so a long one keeps two lines */ long?: boolean; children: React.ReactNode }) {
   return (
     <section className="cta" data-fx="cta" aria-labelledby="cta-title">
       <div className="container">
@@ -14,7 +14,7 @@ export default function CtaBand({ title, children }: { title: string; children: 
             <p className="mono cta__kicker">
               <span className="eyebrow__rule" aria-hidden="true" /> Next step
             </p>
-            <h2 id="cta-title" className="cta__title" data-split>
+            <h2 id="cta-title" className={`cta__title${long ? ' cta__title--long' : ''}`} data-split>
               <Split>{title}</Split>
             </h2>
           </div>

@@ -233,6 +233,52 @@ html.booking-loading * {
   from { transform: translateX(-100%); }
   to { transform: translateX(260%); }
 }
+/* Shown when Tekmetric's booking can't load */
+.booking-notice {
+  position: fixed;
+  z-index: 300;
+  left: 50%;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: min(440px, calc(100vw - 32px));
+  padding: 20px 22px;
+  background: var(--cream);
+  color: var(--ink);
+  border-top: 4px solid var(--red);
+  border-radius: 6px;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.55);
+  animation: booking-notice-in 0.4s var(--ease-out);
+}
+.booking-notice__title {
+  margin: 0 0 6px;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.booking-notice__text {
+  margin: 0 0 16px;
+}
+.booking-notice__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.booking-notice__close {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@keyframes booking-notice-in {
+  from { opacity: 0; transform: translate(-50%, 16px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .booking-notice { animation: none; }
+}
 @media (min-width: 641px) {
   html.booking-open {
     overflow: hidden;
@@ -2033,6 +2079,9 @@ section {
   font-size: clamp(40px, 6vw, 80px);
   line-height: 0.92;
   text-transform: uppercase;
+}
+.cta__title--long {
+  font-size: clamp(36px, 4.6vw, 64px);
 }
 .cta__right p {
   max-width: 44ch;
@@ -4311,4 +4360,18 @@ html {
     gap: clamp(48px, 6vw, 96px);
     align-items: start;
   }
+}
+
+/* Short page hero (Financing): title only, no lead or ticket */
+.page-hero--short {
+  min-height: min(64svh, 600px);
+}
+@media (max-width: 900px) {
+  .page-hero--short {
+    min-height: 0;
+    padding-top: calc(var(--header-h) + 120px);
+  }
+}
+.fin-sec .magnetic {
+  margin-top: 14px;
 }

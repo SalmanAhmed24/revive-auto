@@ -1,8 +1,10 @@
+import { isReady } from './ported-pages';
+
 /**
  * Routes that are built and live. Add each page here when it ships:
  * it goes into sitemap.xml and links to it start prefetching.
  */
-export const LIVE_ROUTES: { path: string; lastModified: string; priority: number }[] = [
+export const LIVE_ROUTES: { path: string; lastModified: string; priority: number; /** false = live but noindex, kept out of sitemap */ index?: boolean }[] = [
   { path: '/', lastModified: '2026-10-26', priority: 1 },
   { path: '/services', lastModified: '2026-10-26', priority: 0.9 },
   { path: '/about-us', lastModified: '2026-10-26', priority: 0.7 },
@@ -24,6 +26,8 @@ export const LIVE_ROUTES: { path: string; lastModified: string; priority: number
   { path: '/locations/robins', lastModified: '2026-10-28', priority: 0.7 },
   { path: '/locations/ely', lastModified: '2026-10-28', priority: 0.7 },
   { path: '/locations/swisher', lastModified: '2026-10-28', priority: 0.7 },
+  { path: '/financing', lastModified: '2026-10-29', priority: 0.5, index: isReady('financing') },
+  { path: '/careers', lastModified: '2026-10-29', priority: 0.5, index: isReady('careers') },
 ];
 
 const live = new Set(LIVE_ROUTES.map((r) => r.path));

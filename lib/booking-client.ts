@@ -1,6 +1,7 @@
 'use client';
 
-import { BOOKING_URL, TEKMETRIC_SHOP_ID } from './booking';
+import { TEKMETRIC_SHOP_ID } from './booking';
+import { business } from './site';
 
 declare global {
   interface Window {
@@ -87,22 +88,58 @@ function track(trigger: HTMLElement | null) {
   };
   const observer = new MutationObserver(check);
   observer.observe(modal, { attributes: true, attributeFilter: ['style', 'class'] });
-  // If the booking app never loads, drop the loading state (the modal stays closed).
-  const timer = setTimeout(() => !shown && end(false), 20000);
+  // If the booking app never loads, drop the loading state and offer the phone instead.
+  const timer = setTimeout(() => {
+    if (shown) return;
+    end(false);
+    showUnavailable(trigger);
+  }, 20000);
   window.addEventListener('keydown', onKey);
   session = () => end(false);
   check();
 }
 
-/** Opens the Tekmetric booking modal; if Tekmetric can't load, falls back to its booking page. */
+/**
+ * Shown when Tekmetric's booking can't load (their firewall blocks some networks and countries,
+ * ad blockers, outages). Keeps the visitor on the site and offers the phone instead of an error page.
+ */
+function showUnavailable(trigger: HTMLElement | null) {
+  document.getElementById('booking-unavailable')?.remove();
+  const box = document.createElement('div');
+  box.id = 'booking-unavailable';
+  box.className = 'booking-notice';
+  box.setAttribute('role', 'alertdialog');
+  box.setAttribute('aria-labelledby', 'booking-notice-title');
+  box.innerHTML = `
+    <p id="booking-notice-title" class="booking-notice__title">Online booking isn’t loading right now</p>
+    <p class="booking-notice__text">Call Revive Auto Care and the team will find a time that works for you.</p>
+    <div class="booking-notice__actions">
+      <a class="btn btn--red btn--sm" href="tel:${business.phoneE164}">Call ${business.phoneDisplay}</a>
+      <button type="button" class="booking-notice__close">Close</button>
+    </div>`;
+  const close = () => {
+    box.remove();
+    window.removeEventListener('keydown', onKey);
+    trigger?.focus({ preventScroll: true });
+  };
+  const onKey = (e: KeyboardEvent) => e.key === 'Escape' && close();
+  box.querySelector('button')!.addEventListener('click', close);
+  window.addEventListener('keydown', onKey);
+  document.body.appendChild(box);
+  box.querySelector<HTMLElement>('a')!.focus({ preventScroll: true });
+  window.dispatchEvent(new CustomEvent('booking:unavailable'));
+}
+
+/** Opens the Tekmetric booking modal; if Tekmetric can't load, offers the phone number instead. */
 export async function openBooking(trigger?: HTMLElement | null) {
   try {
     await loadBooking();
-    window.onShowBooking!(TEKMETRIC_SHOP_ID);
-    track(trigger ?? null);
   } catch {
-    window.location.assign(BOOKING_URL);
+    showUnavailable(trigger ?? null);
+    return;
   }
+  window.onShowBooking!(TEKMETRIC_SHOP_ID);
+  track(trigger ?? null);
 }
 
 /** Tekmetric auto-opens the modal when the page URL has ?book — e.g. a "Book" link from Google Business Profile. */
