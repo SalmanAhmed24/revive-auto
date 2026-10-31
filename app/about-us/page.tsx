@@ -146,7 +146,7 @@ export default function AboutPage() {
           </div>
           <div>
             <p className="record__text" data-reveal>
-              {business.summary} The shop holds a 4.5-star rating across 353 Google reviews and a 4.9-star CARFAX rating
+              {business.summary} The shop holds a 4.6-star rating across 359 Google reviews and a 4.9-star CARFAX rating
               from 32 verified reviews.
             </p>
             <div className="tickets tickets--flat" data-tickets>
@@ -156,10 +156,10 @@ export default function AboutPage() {
                   <span className="ticket__stars" aria-hidden="true">★★★★★</span>
                 </header>
                 <p className="ticket__score">
-                  <CountUp to={4.5} decimals={1} />
+                  <CountUp to={4.6} decimals={1} />
                   <span className="ticket__of">/ 5</span>
                 </p>
-                <p className="ticket__foot mono">353 Google reviews</p>
+                <p className="ticket__foot mono">359 Google reviews</p>
               </article>
               <article className="ticket ticket--b" aria-label="CARFAX rating">
                 <header className="ticket__head">

@@ -4,7 +4,9 @@ Built: **Home** (`/`), **Services** (`/services`), **About Us** (`/about-us`), *
 
 ## Run it
 
-> If you copy new files into the project while `npm run dev` is running and see an error like `Cannot find module`, stop the server, delete the `.next` folder, and start it again.
+> **Updating from a new zip:** replace the whole project folder (don't copy the new files over the old ones, or deleted files are left behind). Then run `npm install`, delete the `.next` folder, and start again. If pages show 404 or `Cannot find module` while `npm run dev` is running, stop the server, delete `.next`, and restart.
+>
+> **Deploying to Vercel from GitHub:** commit *all* changes, including deleted files (`git add -A`), then push. Vercel builds from the repo, so anything not pushed isn't live.
 
 ```bash
 npm install
@@ -30,7 +32,8 @@ On **staging/preview only**, also set `NEXT_PUBLIC_NOINDEX=1` (robots.txt then b
 | Services page title / description / copy | `app/services/page.tsx` |
 | **Service detail pages** (`/services/<slug>`): title, description, hero, work order, what's included, warning signs, why, pricing, where, FAQs, related, CTA | `lib/service-pages.ts` (one entry per service; inline links as `[label](/path)`) |
 | Towns served | `lib/site.ts` → `locations` |
-| **Financing and Careers** content (ported from the current reviveautocareia.com pages): headings, paragraphs, optional Apply button | `lib/ported-pages.ts` → `financing.sections` / `careers.sections` |
+| Financing options (Klarna, Affirm, Snap) and page copy | `app/financing/page.tsx` |
+| Careers page copy | `app/careers/page.tsx` |
 | Shop history timeline (home, About hero ticket + chapters) | `lib/site.ts` → `timeline` |
 | About page copy, title, description | `app/about-us/page.tsx` |
 | About FAQ (first two entries of `homeFaqs`; schema generated from the same text) | `lib/site.ts` → `homeFaqs` |
@@ -48,7 +51,7 @@ Slugs without an entry return a real 404. Each page gets `Service`, `BreadcrumbL
 
 ## Adding a town page
 
-All 5 town pages share one template (`app/locations/[slug]/page.tsx`). Add the town's entry to `lib/town-pages.ts` (copy the `marion` shape) and its path to `LIVE_ROUTES`. Drive distance/time is left out until the shop confirms it (the designs say "don't estimate"): set `driveTime` and it appears in the hero and the "How far is…" FAQ. Until then the FAQ gives the address and a Google Maps directions link from that town.
+All 5 town pages share one template (`app/locations/[slug]/page.tsx`). Add the town's entry to `lib/town-pages.ts` (copy the `marion` shape) and its path to `LIVE_ROUTES`. Each town's confirmed drive copy (`drive`: hero line, "Where we work" line, FAQ answer + route) and its town-specific reason (third `why` paragraph) come from the updated designs (2026-10-31). A town without `drive` shows no distance; its FAQ gives the address and a Google Maps directions link instead.
 
 ## Adding a new page
 
@@ -86,11 +89,22 @@ Shared building blocks: `components/ui/` (Breadcrumbs, InfoBar, VehicleChecklist
 
 Until one is set, the form validates and then asks the visitor to call (319) 261-0999. It works with JavaScript off, has a hidden honeypot field against spam bots, and the phone number stays visible as a fallback.
 
-## Financing and Careers pages
+## Financing page
 
-`/financing` and `/careers` share one template (`components/PortedPage.tsx`) built to the designs: short hero, info bar, and the closing band ("Questions about paying for a repair?" / "Want to work at the shop?"). Both designs say the current page on reviveautocareia.com carries over unchanged, so that content goes into `lib/ported-pages.ts` (`sections`: kicker, heading, body, optional `cta` button such as a lender's Apply link, an application form or a `mailto:` address). Each section renders as a numbered block like the rest of the site.
+`/financing` (`app/financing/page.tsx`) follows the updated design: hero "Auto Repair Financing Made Simple" → 01 Flexible financing options available (Klarna, Affirm, Snap cards, edited in the `options` list at the top of the file) → "Drive now, pay later" strip → "Questions? Contact the shop" link → closing band. Indexed and in the sitemap.
 
-While a page's `sections` is empty it is live but `noindex` and left out of `sitemap.xml` (Lighthouse SEO shows 69 for this reason only). Adding the first section makes it indexable and adds it to the sitemap automatically. If Careers ends up listing specific open jobs, consider adding `JobPosting` JSON-LD per position.
+## Careers page and job applications
+
+`/careers` (`app/careers/page.tsx`) follows the updated design: hero "Careers at Revive Auto Care" → 01 Join a team that cares + Decades of local service → **Apply now** form (`components/careers/ApplyForm.tsx`): name, phone, email, position (Technician / Customer Service / Other), optional note.
+
+Applications are emailed to **andy@reviveautocareia.com** by the server action `app/careers/actions.ts` (subject "Job application: <position> — <name>", reply-to set to the applicant). It works with JavaScript off, validates on the server, and has a hidden honeypot field against spam bots.
+
+**To switch it on** (Vercel → Project → Settings → Environment Variables, then redeploy), use Resend (free tier is plenty):
+1. Sign up at resend.com and create an API key → set `RESEND_API_KEY`.
+2. Verify the domain `reviveautocareia.com` in Resend (it gives 3 DNS records to add where the domain is managed), then set `CONTACT_FROM_EMAIL` to e.g. `Revive Auto Care <website@reviveautocareia.com>`.
+   Quick test without DNS: if the Resend account itself is created with andy@reviveautocareia.com, you can skip step 2; Resend's test sender can deliver to the account owner only.
+- Optional: `CAREERS_TO_EMAIL` to send applications somewhere else; `CAREERS_WEBHOOK_URL` to post them to Zapier/Make/a Google Sheet instead of email.
+- Until it's set up, the form asks applicants to call (319) 261-0999 instead.
 
 ## Online booking (Tekmetric)
 
@@ -107,13 +121,11 @@ Every "Schedule Appointment" button (header, mobile menu, heroes, CTA bands, Con
 ## Open items before launch (need client confirmation)
 
 - [ ] Contact form delivery → `CONTACT_WEBHOOK_URL` or `RESEND_API_KEY` + `CONTACT_TO_EMAIL`
-- [ ] Hiawatha, Robins, Ely and Swisher: a genuinely town-specific reason to choose Revive (design asks the shop to supply it; add as a third `why` paragraph in `lib/town-pages.ts`)
-- [ ] Confirmed driving distance/time from each town (Marion, Hiawatha, Robins, Ely, Swisher) → `driveTime` in `lib/town-pages.ts`
 - [ ] Confirm (319) 261-0999 accepts text messages (the Contact page has a "Text" button)
 - [ ] Oil Change FAQ: confirm a typical turnaround time for "How long does an oil change take?" (not published until confirmed), and whether Revive recommends an oil interval different from the general 5,000–7,500-mile guidance
 
 - [ ] After deploy: book a test appointment through the modal on desktop and phone (Tekmetric's servers can't be reached from the build sandbox; tested against a stand-in of their script)
-- [ ] Financing and Careers: paste the current reviveautocareia.com page content into `lib/ported-pages.ts`
+- [ ] Careers applications: set `RESEND_API_KEY` (+ verify reviveautocareia.com and set `CONTACT_FROM_EMAIL`) so applications reach andy@reviveautocareia.com; send a test application after deploy
 - [ ] Production domain → `NEXT_PUBLIC_SITE_URL`
 - [ ] Google Business Profile lat/long → add `geo` in `lib/schema.ts`
 - [ ] Google Business Profile, Facebook, Instagram URLs → `business.sameAs` in `lib/site.ts`

@@ -17,7 +17,7 @@ import { ArrowUpRight } from '@/components/icons';
 
 const TITLE = 'Reviews | Revive Auto Care, Cedar Rapids IA';
 const DESCRIPTION =
-  'Revive Auto Care holds a 4.5-star rating across 353 Google reviews and 4.9 stars from 32 verified CARFAX reviews. See what Cedar Rapids drivers say.';
+  'Revive Auto Care holds a 4.6-star rating across 359 Google reviews and 4.9 stars from 32 verified CARFAX reviews. See what Cedar Rapids drivers say.';
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -53,7 +53,7 @@ export default function ReviewsPage() {
           />
           <span className="page-hero__shade" />
         </div>
-        <span className="page-hero__ghost" data-ghost="4.5" aria-hidden="true" />
+        <span className="page-hero__ghost" data-ghost="4.6" aria-hidden="true" />
 
         <div className="container page-hero__inner">
           <Breadcrumbs items={crumbs} />

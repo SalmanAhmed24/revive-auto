@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: '/',
     title: 'Auto Repair in Cedar Rapids, IA | Revive Auto Care',
     description:
-      'Family-owned Cedar Rapids auto repair since 1989. 4.5★ across 353 Google reviews. Estimate before work, Mon–Thu 7:30 AM – 5:30 PM.',
+      'Family-owned Cedar Rapids auto repair since 1989. 4.6★ across 359 Google reviews. Estimate before work, Mon–Thu 7:30 AM – 5:30 PM.',
   },
 };
 
@@ -136,8 +136,8 @@ export default function HomePage() {
               </Seal>
             </li>
             <li>
-              <Seal ring="353 Google reviews ★ 353 Google reviews ★" tone="red">
-                <strong className="seal__num"><CountUp to={4.5} decimals={1} suffix="★" /></strong>
+              <Seal ring="359 Google reviews ★ 359 Google reviews ★" tone="red">
+                <strong className="seal__num"><CountUp to={4.6} decimals={1} suffix="★" /></strong>
                 <span className="seal__label">Google rating</span>
               </Seal>
             </li>
@@ -155,8 +155,8 @@ export default function HomePage() {
             </li>
           </ul>
           <p className="proof__text" data-reveal>
-            Revive Auto Care has served Cedar Rapids for over 30 years and is family-owned. Drivers rate it 4.5 stars
-            across 353 Google reviews, and CARFAX shows 4.9 stars from 32 verified reviews. Every number here comes
+            Revive Auto Care has served Cedar Rapids for over 30 years and is family-owned. Drivers rate it 4.6 stars
+            across 359 Google reviews, and CARFAX shows 4.9 stars from 32 verified reviews. Every number here comes
             from a public profile you can check.
           </p>
         </div>
@@ -269,7 +269,7 @@ export default function HomePage() {
                 <Split>What drivers say</Split>
               </h2>
             <p className="reviews__text" data-reveal>
-              Revive Auto Care holds a 4.5-star rating across 353 Google reviews, and drivers also rate it 4.9 stars on
+              Revive Auto Care holds a 4.6-star rating across 359 Google reviews, and drivers also rate it 4.9 stars on
               CARFAX. <Link href="/reviews">Read more reviews</Link> to see what Cedar Rapids drivers say about their
               experience. Every figure comes from a public profile you can check.
             </p>
@@ -289,10 +289,10 @@ export default function HomePage() {
                 <span className="ticket__stars" aria-hidden="true">★★★★★</span>
               </header>
               <p className="ticket__score">
-                <CountUp to={4.5} decimals={1} />
+                <CountUp to={4.6} decimals={1} />
                 <span className="ticket__of">/ 5</span>
               </p>
-              <p className="ticket__foot mono">353 Google reviews</p>
+              <p className="ticket__foot mono">359 Google reviews</p>
             </article>
             <article className="ticket ticket--b" aria-label="CARFAX rating">
               <header className="ticket__head">

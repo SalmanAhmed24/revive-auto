@@ -79,8 +79,8 @@ export default function RepairOrder() {
           ))}
         </ul>
         <div className="ro__stamp">
-          <strong>4.5 ★</strong>
-          <span>353 Google reviews</span>
+          <strong>4.6 ★</strong>
+          <span>359 Google reviews</span>
         </div>
       </m.div>
     </div>

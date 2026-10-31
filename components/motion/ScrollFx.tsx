@@ -220,6 +220,38 @@ function setup(gsap: G, ScrollTrigger: ST) {
           .from(list.querySelectorAll('.checkbox path'), { strokeDashoffset: 24, stagger: 0.08, duration: 0.4 }, '-=0.4');
       }
     },
+    careers: (s) => {
+      reveals(s);
+      const form = s.querySelector('[data-apply]');
+      if (form) {
+        gsap
+          .timeline({ scrollTrigger: { trigger: form, start: 'top 85%', toggleActions: 'play none none none' } })
+          .from(form, { y: 60, rotate: 1.5, autoAlpha: 0, duration: 1, ease: 'expo.out', clearProps: 'transform,opacity,visibility' })
+          .from(form.querySelector('.cform__script'), { clipPath: 'inset(-30% 100% -40% 0%)', duration: 0.9, ease: 'power2.inOut', clearProps: 'clipPath' }, '-=0.5')
+          .from(form.querySelectorAll('.cform__field, .btn'), { y: 18, autoAlpha: 0, stagger: 0.06, duration: 0.5, clearProps: 'transform,opacity,visibility' }, '-=0.6');
+      }
+    },
+    finance: (s) => {
+      reveals(s);
+      const cards = s.querySelector('[data-fin-opts]');
+      if (cards) {
+        gsap
+          .timeline({ scrollTrigger: { trigger: cards, start: 'top 85%', toggleActions: 'play none none none' } })
+          .from(cards.querySelectorAll('.fin-opt'), { y: 60, rotate: (i: number) => [-2, 1.5, -1][i % 3], autoAlpha: 0, stagger: 0.14, duration: 0.9, ease: 'expo.out', clearProps: 'transform,opacity,visibility' })
+          .from(cards.querySelectorAll('.fin-opt__rule'), { scaleX: 0, stagger: 0.14, duration: 0.7, ease: 'power2.out', clearProps: 'transform' }, '<0.3')
+          .from(cards.querySelectorAll('.fin-opt__name'), { yPercent: 40, autoAlpha: 0, stagger: 0.14, duration: 0.6, clearProps: 'transform,opacity,visibility' }, '<');
+      }
+      const script = s.querySelector('[data-fin-script]');
+      if (script) {
+        gsap.from(script, {
+          clipPath: 'inset(-30% 100% -40% 0%)',
+          duration: 1.4,
+          ease: 'power2.inOut',
+          clearProps: 'clipPath',
+          scrollTrigger: { trigger: script, start: 'top 88%', toggleActions: 'play none none none' },
+        });
+      }
+    },
     'page-hero': (s) => {
       const st = { trigger: s, start: 'top top', end: 'bottom top', scrub: true };
       gsap.to(s.querySelector('.page-hero__img'), { yPercent: 14, scale: 1.1, ease: 'none', scrollTrigger: st });

@@ -70,7 +70,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     why: {
       eyebrow: 'Family-owned · 30+ years',
       paragraphs: [
-        'Revive Auto Care has served Cedar Rapids for over 30 years as a family-owned shop. Drivers rate it 4.5 stars across 353 Google reviews, and CARFAX shows a 4.9-star rating from 32 verified reviews. On brake jobs, the shop starts with an inspection of the entire braking system, and the recommendation depends on the condition of everything in it. A brake job isn’t automatically a pad-only replacement, and Revive won’t treat it like one.',
+        'Revive Auto Care has served Cedar Rapids for over 30 years as a family-owned shop. Drivers rate it 4.6 stars across 359 Google reviews, and CARFAX shows a 4.9-star rating from 32 verified reviews. On brake jobs, the shop starts with an inspection of the entire braking system, and the recommendation depends on the condition of everything in it. A brake job isn’t automatically a pad-only replacement, and Revive won’t treat it like one.',
         'Revive Auto Care provides professional maintenance, diagnostics, and repair services for domestic and Asian-import vehicles, including select hybrid and commercial fleet vehicles. We don’t service European makes and models.',
       ],
       image: '/images/hero-technician-engine-bay.webp',
@@ -119,7 +119,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       eyebrow: 'Family-owned · 30+ years',
       paragraphs: [
         'A routine oil change is a good time to catch a bigger problem early, and Revive Auto Care will find issues before they become headaches. Each oil and filter service comes with a vehicle condition inspection, so fluid levels, tire condition, and visible leaks get a look while your vehicle is already in the shop.',
-        'The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.5-star rating across 353 Google reviews and a 4.9-star CARFAX rating from 32 verified reviews.',
+        'The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.6-star rating across 359 Google reviews and a 4.9-star CARFAX rating from 32 verified reviews.',
         'Revive Auto Care provides professional maintenance, diagnostics, and repair services for domestic and Asian-import vehicles, including select hybrid and commercial fleet vehicles. Unfortunately, we don’t service European makes and models.',
       ],
       image: '/images/hero-technician-engine-bay.webp',
@@ -200,7 +200,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     why: {
       eyebrow: 'Family-owned · 30+ years',
       paragraphs: [
-        'Electrical faults can be hard to pin down, so Revive Auto Care uses wiring diagrams, scan tools, and electrical testing equipment to find the fault instead of replacing parts and hoping. The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.5-star rating across 353 Google reviews.',
+        'Electrical faults can be hard to pin down, so Revive Auto Care uses wiring diagrams, scan tools, and electrical testing equipment to find the fault instead of replacing parts and hoping. The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.6-star rating across 359 Google reviews.',
         'Revive Auto Care provides professional maintenance, diagnostics, and repair services for domestic and Asian-import vehicles, including select hybrid and commercial fleet vehicles. We don’t service European makes and models.',
       ],
       image: '/images/hero-technician-engine-bay.webp',
@@ -235,7 +235,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     why: {
       eyebrow: 'Family-owned · 30+ years',
       paragraphs: [
-        'When your air conditioning stops cooling, Revive Auto Care looks for the cause of the poor performance and fixes it. The diagnosis can include refrigerant leaks, compressor concerns, condensers, evaporators, and electrical controls. The shop has served Cedar Rapids for over 30 years as a family-owned business, and holds a 4.5-star rating across 353 Google reviews.',
+        'When your air conditioning stops cooling, Revive Auto Care looks for the cause of the poor performance and fixes it. The diagnosis can include refrigerant leaks, compressor concerns, condensers, evaporators, and electrical controls. The shop has served Cedar Rapids for over 30 years as a family-owned business, and holds a 4.6-star rating across 359 Google reviews.',
         'Revive Auto Care provides professional maintenance, diagnostics, and repair services for domestic and Asian-import vehicles, including select hybrid and commercial fleet vehicles. Sorry, we don’t service European makes and models.',
       ],
       image: '/images/hero-technician-engine-bay.webp',
@@ -278,7 +278,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       eyebrow: 'Family-owned · 30+ years',
       paragraphs: [
         'Diagnostics are a major part of the business at Revive Auto Care. The shop works with professional equipment and procedures to find the cause before recommending a repair. Diagnostic testing is a separately billed professional service, and it’s what keeps the repair that follows aimed at the real problem.',
-        'Revive has served Cedar Rapids for over 30 years as a family-owned shop, with a 4.5-star rating across 353 Google reviews.',
+        'Revive has served Cedar Rapids for over 30 years as a family-owned shop, with a 4.6-star rating across 359 Google reviews.',
         'Revive Auto Care provides professional maintenance, diagnostics, and repair services for domestic and Asian-import vehicles, including select hybrid and commercial fleet vehicles. We don’t service European makes and models.',
       ],
       image: '/images/hero-technician-engine-bay.webp',
@@ -320,7 +320,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     why: {
       eyebrow: 'Family-owned · 30+ years',
       paragraphs: [
-        'Engine repair covers a wide range. Revive Auto Care starts by evaluating the engine’s condition, then recommends repair or replacement based on your vehicle’s needs and your goals. The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.5-star rating across 353 Google reviews and a 4.9-star CARFAX rating from 32 verified reviews.',
+        'Engine repair covers a wide range. Revive Auto Care starts by evaluating the engine’s condition, then recommends repair or replacement based on your vehicle’s needs and your goals. The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.6-star rating across 359 Google reviews and a 4.9-star CARFAX rating from 32 verified reviews.',
         'Revive Auto Care provides professional maintenance, diagnostics, and repair services for domestic and Asian-import vehicles, including select hybrid and commercial fleet vehicles. We don’t service European makes and models.',
       ],
       image: '/images/hero-technician-engine-bay.webp',
@@ -355,7 +355,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     why: {
       eyebrow: 'Family-owned · 30+ years',
       paragraphs: [
-        'Handling problems, abnormal tire wear, vibration, and suspension noises each have a cause, and Revive Auto Care diagnoses it before replacing parts. The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.5-star rating across 353 Google reviews and a 4.9-star CARFAX rating from 32 verified reviews.',
+        'Handling problems, abnormal tire wear, vibration, and suspension noises each have a cause, and Revive Auto Care diagnoses it before replacing parts. The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.6-star rating across 359 Google reviews and a 4.9-star CARFAX rating from 32 verified reviews.',
         'Revive Auto Care provides professional maintenance, diagnostics, and repair services for domestic and Asian-import vehicles, including select hybrid and commercial fleet vehicles. We don’t service European makes and models.',
       ],
       image: '/images/hero-technician-engine-bay.webp',
@@ -392,7 +392,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       eyebrow: 'Family-owned · 30+ years',
       paragraphs: [
         'A transmission fluid service is maintenance, and Revive Auto Care says so plainly: It isn’t guaranteed to correct an existing mechanical or performance problem. If your vehicle shifts poorly or shudders, the shop evaluates that first and tells you what it finds.',
-        'Revive has served Cedar Rapids for over 30 years as a family-owned shop, with a 4.5-star rating across 353 Google reviews.',
+        'Revive has served Cedar Rapids for over 30 years as a family-owned shop, with a 4.6-star rating across 359 Google reviews.',
         'Revive Auto Care provides professional maintenance, diagnostics, and repair services for domestic and Asian-import vehicles, including select hybrid and commercial fleet vehicles. We don’t service European makes and models.',
       ],
       image: '/images/hero-technician-engine-bay.webp',
@@ -427,7 +427,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     why: {
       eyebrow: 'Family-owned · 30+ years',
       paragraphs: [
-        'A weak battery can be a charging problem or an issue with the battery itself. Revive Auto Care checks both: battery condition, cable connections, charging voltage, and parasitic drains. The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.5-star rating across 353 Google reviews and a 4.9-star CARFAX rating from 32 verified reviews.',
+        'A weak battery can be a charging problem or an issue with the battery itself. Revive Auto Care checks both: battery condition, cable connections, charging voltage, and parasitic drains. The shop has served Cedar Rapids for over 30 years as a family-owned business, with a 4.6-star rating across 359 Google reviews and a 4.9-star CARFAX rating from 32 verified reviews.',
         'Revive Auto Care provides professional maintenance, diagnostics, and repair services for domestic and Asian-import vehicles, including select hybrid and commercial fleet vehicles. We don’t service European makes and models.',
       ],
       image: '/images/hero-technician-engine-bay.webp',

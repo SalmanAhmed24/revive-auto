@@ -1,5 +1,3 @@
-import { isReady } from './ported-pages';
-
 /**
  * Routes that are built and live. Add each page here when it ships:
  * it goes into sitemap.xml and links to it start prefetching.
@@ -26,8 +24,8 @@ export const LIVE_ROUTES: { path: string; lastModified: string; priority: number
   { path: '/locations/robins', lastModified: '2026-10-28', priority: 0.7 },
   { path: '/locations/ely', lastModified: '2026-10-28', priority: 0.7 },
   { path: '/locations/swisher', lastModified: '2026-10-28', priority: 0.7 },
-  { path: '/financing', lastModified: '2026-10-29', priority: 0.5, index: isReady('financing') },
-  { path: '/careers', lastModified: '2026-10-29', priority: 0.5, index: isReady('careers') },
+  { path: '/financing', lastModified: '2026-10-31', priority: 0.6 },
+  { path: '/careers', lastModified: '2026-10-31', priority: 0.6 },
 ];
 
 const live = new Set(LIVE_ROUTES.map((r) => r.path));

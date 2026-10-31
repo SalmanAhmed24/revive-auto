@@ -23,7 +23,10 @@ import BookingLink from '@/components/BookingLink';
 type Props = { params: Promise<{ slug: string }> };
 
 /** Only towns with written content are generated; any other slug is a real 404. */
-export const dynamicParams = false;
+// Known slugs are prerendered by generateStaticParams; anything else is rendered on demand and
+// hits notFound() below (a real 404). dynamicParams stays true so a stale or partial build/dev
+// cache can never turn a real page into a 404.
+export const dynamicParams = true;
 export function generateStaticParams() {
   return Object.keys(townDetails).map((slug) => ({ slug }));
 }
@@ -55,12 +58,12 @@ export default async function TownPage({ params }: Props) {
     { name: 'Locations', path: '/locations' },
     { name, path },
   ];
-  // Distance FAQ: states the drive time only once the shop has confirmed it; never estimated.
+  // Distance FAQ: confirmed drive copy from the design; without it, address + directions (never estimated).
   const faqs = [
     {
       q: `How far is Revive Auto Care from ${name}?`,
-      a: d.driveTime
-        ? `${d.driveTime} Revive Auto Care is at ${fullAddress}.`
+      a: d.drive
+        ? `${d.drive.answer}\n\n${d.drive.route}`
         : `Revive Auto Care is at ${fullAddress}. [Get driving directions from ${name}](${directionsFrom(name)}).`,
     },
   ];
@@ -70,7 +73,7 @@ export default async function TownPage({ params }: Props) {
     <main id="main">
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <JsonLd data={townPageSchema({ slug, town: name, description: d.heroIntro })} />
-      <JsonLd data={faqSchema(faqs.map((f) => ({ q: f.q, a: plain(f.a) })))} />
+      <JsonLd data={faqSchema(faqs.map((f) => ({ q: f.q, a: plain(f.a).replace(/\n\n/g, ' ') })))} />
       <ScrollFx />
 
       {/* ───────────── HERO ───────────── */}
@@ -103,9 +106,9 @@ export default async function TownPage({ params }: Props) {
             <p className="page-hero__lead anim-rise" style={{ '--i': 6 } as React.CSSProperties}>
               {d.heroIntro}
             </p>
-            {d.driveTime && (
-              <p className="town-drive mono anim-rise" style={{ '--i': 6 } as React.CSSProperties}>
-                From {name}: {d.driveTime}
+            {d.drive && (
+              <p className="page-hero__lead page-hero__lead--drive anim-rise" style={{ '--i': 6 } as React.CSSProperties}>
+                {d.drive.hero}
               </p>
             )}
             <div className="hero__ctas anim-rise" style={{ '--i': 7 } as React.CSSProperties}>
@@ -193,9 +196,12 @@ export default async function TownPage({ params }: Props) {
                 <Split>Where we work</Split>
               </h2>
             </div>
-            <p className="section-head__text" data-reveal>
-              <RichText text={d.where} />
-            </p>
+            <div className="section-head__text" data-reveal>
+              <p>
+                <RichText text={d.where} />
+              </p>
+              {d.drive && <p>{d.drive.where}</p>}
+            </div>
           </div>
           <VisitCard />
         </div>
@@ -218,9 +224,11 @@ export default async function TownPage({ params }: Props) {
                   <span className="faq__icon" aria-hidden="true" />
                 </summary>
                 <div className="faq__a">
-                  <p>
-                    <RichText text={f.a} />
-                  </p>
+                  {f.a.split('\n\n').map((para) => (
+                    <p key={para.slice(0, 24)}>
+                      <RichText text={para} />
+                    </p>
+                  ))}
                 </div>
               </details>
             ))}

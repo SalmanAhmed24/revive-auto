@@ -22,7 +22,7 @@ export const business = {
   hoursShort: 'Mon–Thu · 7:30 AM – 5:30 PM',
   hoursSentence: 'Monday through Thursday, 7:30 AM to 5:30 PM',
   ratings: {
-    google: { value: '4.5', count: 353 },
+    google: { value: '4.6', count: 359 },
     carfax: { value: '4.9', count: 32 },
   },
   vehicles: {

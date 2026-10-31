@@ -33,7 +33,7 @@ export default async function Image() {
             <span style={{ fontFamily: 'Script', textTransform: 'none', color: '#ff5a67', fontSize: 92, marginTop: 8 }}>honest work,</span>
           </div>
           <div style={{ display: 'flex', gap: 28, fontFamily: 'Mono', fontSize: 22, color: '#bdb3a6' }}>
-            <span style={{ color: '#fff' }}>4.5 / 5 · 353 Google reviews</span>
+            <span style={{ color: '#fff' }}>4.6 / 5 · 359 Google reviews</span>
             <span>(319) 261-0999</span>
           </div>
         </div>

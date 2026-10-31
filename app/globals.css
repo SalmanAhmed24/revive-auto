@@ -4375,3 +4375,259 @@ html {
 .fin-sec .magnetic {
   margin-top: 14px;
 }
+
+/* ==========================================================================
+   Financing
+   ========================================================================== */
+.fin {
+  padding: clamp(80px, 10vw, 128px) 0 clamp(40px, 5vw, 64px);
+}
+.fin__head {
+  align-items: start;
+}
+.fin__intro {
+  max-width: 58ch;
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.6;
+  color: var(--ink);
+}
+.fin-opts {
+  display: grid;
+  gap: 24px;
+  margin-top: clamp(8px, 2vw, 24px);
+}
+.fin-opt {
+  position: relative;
+  padding: 28px 28px 30px;
+  background: var(--paper);
+  border-top: 6px solid var(--red);
+  box-shadow: 0 30px 50px -28px rgba(20, 18, 16, 0.55);
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+.fin-opt:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 40px 60px -30px rgba(20, 18, 16, 0.6);
+}
+.fin-opt__num {
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+.fin-opt__name {
+  margin: 18px 0 0;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(34px, 3vw, 42px);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--red);
+}
+/* Dashed tear line with punched notches, like the shop tickets */
+.fin-opt__rule {
+  position: relative;
+  display: block;
+  height: 18px;
+  margin: 16px -10px 18px;
+  transform-origin: left center;
+}
+.fin-opt__rule::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 50%;
+  border-top: 1.5px dashed rgba(20, 18, 16, 0.3);
+}
+.fin-opt__rule::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 9px 50%, var(--cream) 8px, transparent 8.5px),
+    radial-gradient(circle at calc(100% - 9px) 50%, var(--cream) 8px, transparent 8.5px);
+}
+.fin-opt__text {
+  margin: 0;
+  line-height: 1.6;
+}
+.fin-strip {
+  display: grid;
+  gap: 16px;
+  align-items: center;
+  margin-top: clamp(40px, 5vw, 48px);
+  padding: clamp(24px, 3vw, 32px) 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.fin-strip__script {
+  margin: 0;
+  font-family: var(--f-script);
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.15;
+  color: var(--red);
+  transform: rotate(-3deg);
+  transform-origin: left center;
+}
+.fin-strip__text {
+  margin: 0;
+  max-width: 42ch;
+  line-height: 1.6;
+}
+.fin-strip + p {
+  margin-top: 28px;
+}
+@media (min-width: 760px) {
+  .fin-opts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .fin-strip {
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fin-opt,
+  .fin-opt:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Careers
+   ========================================================================== */
+.join {
+  padding: clamp(72px, 9vw, 112px) 0 clamp(80px, 10vw, 128px);
+}
+.join__grid {
+  display: grid;
+  gap: 48px;
+  align-items: start;
+}
+.join__text {
+  margin: 24px 0 0;
+  max-width: 54ch;
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.65;
+}
+.join__note {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 2px solid var(--ink);
+  max-width: 54ch;
+}
+.join__note-title {
+  margin: 0 0 8px;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(22px, 2vw, 26px);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.join__note p {
+  margin: 0;
+  color: var(--muted);
+}
+/* Apply card: the contact form, dressed like the design's ticket */
+.cform--apply {
+  border: 0;
+  border-top: 6px solid var(--red);
+  border-radius: 0;
+  padding: clamp(24px, 3vw, 40px);
+  box-shadow: 0 40px 70px -36px rgba(20, 18, 16, 0.55);
+}
+.cform--apply input,
+.cform--apply textarea {
+  font-family: var(--f-body, inherit);
+}
+.cform__script {
+  margin: 0 0 14px;
+  font-family: var(--f-script);
+  font-weight: 400;
+  font-size: clamp(32px, 3vw, 40px);
+  line-height: 1;
+  color: var(--red);
+  text-transform: none;
+  transform: rotate(-4deg);
+  transform-origin: left center;
+}
+.cform__choices {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.cform__choices legend {
+  padding: 0;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+.chip {
+  position: relative;
+  cursor: pointer;
+}
+.chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1.5px solid rgba(20, 18, 16, 0.35);
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s, transform 0.25s var(--ease-out);
+}
+.chip:hover span {
+  border-color: var(--ink);
+}
+.chip input:checked + span {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+.chip input:focus-visible + span {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+}
+.chip input:active + span {
+  transform: scale(0.96);
+}
+.cform--apply textarea {
+  min-height: 96px;
+}
+.cform--apply .btn {
+  margin-top: 6px;
+}
+@media (min-width: 960px) {
+  .join__grid {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(48px, 5vw, 72px);
+  }
+}
+.cform--apply .cform__row {
+  gap: 0 20px;
+}
+/* Town pages: confirmed drive line under the hero intro, extra "where" paragraph */
+.page-hero__lead--drive {
+  margin-top: 14px;
+}
+.section-head__text p {
+  margin: 0;
+}
+.section-head__text p + p {
+  margin-top: 14px;
+}

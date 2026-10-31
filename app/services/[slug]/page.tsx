@@ -24,7 +24,10 @@ import BookingLink from '@/components/BookingLink';
 type Props = { params: Promise<{ slug: string }> };
 
 /** Only services with written content are generated; any other slug is a real 404. */
-export const dynamicParams = false;
+// Known slugs are prerendered by generateStaticParams; anything else is rendered on demand and
+// hits notFound() below (a real 404). dynamicParams stays true so a stale or partial build/dev
+// cache can never turn a real page into a 404.
+export const dynamicParams = true;
 export function generateStaticParams() {
   return Object.keys(serviceDetails).map((slug) => ({ slug }));
 }
